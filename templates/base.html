@@ -18,6 +18,8 @@
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
     rel="stylesheet">
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
 
   <!-- Vendor CSS Files -->
   {% block css %}
@@ -33,6 +35,9 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
   {% endblock css %}
+
+  {% block css2 %}
+  {% endblock css2 %}
   <!-- =======================================================
     * Template Name: openDigital - v2.0.0
     * Author: Henry León
@@ -53,7 +58,7 @@
           <a href="" class="logo mr-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
           <nav class="nav-menu d-none d-lg-block">
             <ul>
-              <li class="active"><a href="">Inicio</a></li>
+              <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
               <li><a href="#about">Acerca de nosotros</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
               <li><a href="#team">Equipo</a></li>
@@ -537,7 +542,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-header">
-          <h3>Contact Us</h3>
+          <h3>Contáctanos</h3>
           <p>Puede contactarnos por cualquier medio presente y con mucho gusto aclararemos todas sus dudas.
             <br><b><i>¡ Nos agradará poder servirle de ayuda !</i></b></p>
         </div>

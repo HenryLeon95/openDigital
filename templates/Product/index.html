@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Productos
+{% endblock title %}
+
+{% block css2%}{% load static %}
+<link href="{% static 'assets/css/index.css' %}" rel="stylesheet">
+{% endblock css2 %}
+
+{% block intro %}
+<section id="intro">
+    <div class="intro-container">
+        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators"></ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="carousel-item active"
+                    style="background-image: url(../static/assets/img/intro-carousel/1.jpg)">
+
+                    <div class="carousel-container">
+                        <div class="container">
+                            <h2 class="animate__animated animate__fadeInDown">Productos</h2>
+                        </div>apellido
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock intro %}
+
+{% block main %}
+<div class="nuevo col-md-3" id="nuevo">
+    <br>
+    <div class="o" style="text-align: center;">
+        <h5>Categorias</h5>
+    </div>
+    <br>
+    <div class="o" style="text-align: center">
+        <hr>
+        {% for categoria in categories %}
+        <ul class="o">
+            <li class="has-sub">
+                <!--<button class="btn btn-info btn-xs" (click)="editCat(category.id)">
+                    <i class="fas fa-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-xs" (click)="deleteCat(category.id)">
+                    <i class="fas fa-trash"></i>
+                </button>
+                &nbsp;&nbsp;-->
+                <a  href="{% url 'productos' %}">{{categoria.name}}</a>
+            </li>
+        </ul>
+        {% endfor %}
+        <hr>
+        {% if flag0 %}
+        <div class="nuevo">
+            <h5 class="offset-md-2">
+                Sub-Categorias
+            </h5>
+            <p class="offset-md-1">
+                {{nombre_cat}}
+            </p>
+            <ul class="o" *ngFor="let subcategory of sub_categoria">
+                <li class="has-sub" *ngIf="subcategory.padre == id_cat">
+                    <button class="btn btn-info btn-xs" (click)="editCat(subcategory.id)">
+                        <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-xs" (click)="deleteCat(subcategory.id)">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                    &nbsp;&nbsp;
+                    <a (click)="ver(subcategory)" style="float: right;">{{subcategory.nombre_categoria}}</a>
+                </li>
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+    <br>
+</div>
+
+
+{% if categories %}
+<table class="table table-bordered">
+	<thead>
+		<tr>
+            <td>Categoría</td>		
+		</tr>		
+	</thead>
+	<tbody>
+		{% for categoria in categories %}
+		<tr>
+			<td>{{ categoria.name }}</td>
+		</tr>
+		{% endfor %}
+        {% else %}
+        <br>
+        <br>
+		<h1>Aún no se han registrado categorias!</h1>
+		{% endif %}
+	</tbody>
+</table> 
+
+<main id="main">
+    <!-- ======= Featured Services Section Section ======= -->
+    <section id="featured-services">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 box">
+            <h4 class="title"><a href="">Variedad de Productos</a></h4>
+            <p class="description">Hola
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+</main>
+{% endblock main %}
