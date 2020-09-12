@@ -7,6 +7,7 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
   <title>{% block title %}OpenDigital {% endblock title %}</title>
+
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -32,11 +33,10 @@
   <!-- Template Main CSS File -->
   <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
   {% endblock css %}
-
   <!-- =======================================================
     * Template Name: openDigital - v2.0.0
     * Author: Henry León
-    * License: https://bootstrapmade.com/license/
+    * License: *****.****.*****
     ======================================================== -->
 </head>
 
@@ -49,18 +49,15 @@
 
       <div class="row justify-content-center">
         <div class="col-xl-11 d-flex align-items-center">
-          <h1 class="logo mr-auto"><a href="index.html">OpenDigital</a></h1>
-          <!-- Uncomment below if you prefer to use an image logo -->
-          <!-- <a href="index.html" class="logo mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+          <h1 class="logo mr-auto"><a href="">OpenDigital</a></h1>
+          <a href="" class="logo mr-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
           <nav class="nav-menu d-none d-lg-block">
             <ul>
-              <li class="active"><a href="index.html">Inicio</a></li>
+              <li class="active"><a href="">Inicio</a></li>
               <li><a href="#about">Acerca de nosotros</a></li>
               <li><a href="#portfolio">Portfolio</a></li>
               <li><a href="#team">Equipo</a></li>
-              <li><a href="#contact">Contact Us</a></li>
-
+              <li><a href="#contact">Contáctanos</a></li>
             </ul>
           </nav><!-- .nav-menu -->
         </div>
@@ -75,11 +72,9 @@
   <section id="intro">
     <div class="intro-container">
       <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-
         <ol class="carousel-indicators"></ol>
-
         <div class="carousel-inner" role="listbox">
-
+          
           <div class="carousel-item active" style="background-image: url(../static/assets/img/intro-carousel/1.jpg)">
             <div class="carousel-container">
               <div class="container">
@@ -151,8 +146,9 @@
   </section><!-- End Intro Section -->
   {% endblock intro %}
 
+  {% block main %}
   <main id="main">
-
+    {% block deatil_main %}
     <!-- ======= Featured Services Section Section ======= -->
     <section id="featured-services">
       <div class="container">
@@ -184,7 +180,9 @@
         </div>
       </div>
     </section><!-- End Featured Services Section -->
+    {% endblock deatil_main %}
 
+    {% block about_us %}
     <!-- ======= About Us Section ======= -->
     <section id="about">
       <div class="container" data-aos="fade-up">
@@ -247,10 +245,11 @@
           </div>
 
         </div>
-
       </div>
     </section><!-- End About Us Section -->
+    {% endblock about_us %}
 
+    {% block skills %}
     <!-- ======= Skills Section ======= -->
     <section id="skills">
       <div class="container" data-aos="fade-up">
@@ -298,9 +297,9 @@
           </div>
 
         </div>
-
       </div>
     </section><!-- End Skills Section -->
+    {% endblock skills %}
 
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="section-bg">
@@ -413,6 +412,7 @@
       </div>
     </section><!-- End Portfolio Section -->
 
+    {% block clients %}
     <!-- ======= Our Clients Section ======= -->
     <section id="clients">
       <div class="container" data-aos="zoom-in">
@@ -434,12 +434,14 @@
 
       </div>
     </section><!-- End Our Clients Section -->
+    {% endblock clients %}
 
+    {% block team %}
     <!-- ======= Team Section ======= -->
     <section id="team">
       <div class="container" data-aos="fade-up">
         <div class="section-header">
-          <h3>Team</h3>
+          <h3>Equipo</h3>
           <p>Sed ut perspiciatis unde omnis iste natus erroP DOWN
             Drop Down 1
             Drop Down 3
@@ -527,7 +529,9 @@
 
       </div>
     </section><!-- End Team Section -->
+    {% endblock team %}
 
+    {% block contact %}
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="section-bg">
       <div class="container" data-aos="fade-up">
@@ -544,7 +548,7 @@
             <div class="contact-address">
               <i class="ion-ios-location-outline"></i>
               <h3>Address</h3>
-              <address>A108 Adam Street, NY 535022, USA</address>
+              <address>6ta avenida, 10 calle, edificio plaza vivar 2do nivel local 12-2, zona 1, ciudad de Guatemala, Guatemala.</address>
             </div>
           </div>
 
@@ -567,8 +571,10 @@
 
       </div>
     </section><!-- End Contact Section -->
+    {% endblock contact %}
 
   </main><!-- End #main -->
+  {% endblock main %}
 
   {% block footer %}
   <!-- ======= Footer ======= -->
@@ -585,7 +591,7 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
+            <h4>Enlaces útiles</h4>
             <ul>
               <li><i class="ion-ios-arrow-right"></i> <a href="#">Inicio</a></li>
               <li><i class="ion-ios-arrow-right"></i> <a href="#about">Acerca de nosotros</a></li>
@@ -594,11 +600,11 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Contact Us</h4>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br>
+            <h4>Contáctanos</h4>
+            <p>6ta avenida, 10 calle<br>
+              Edificio plaza vivar, 2do nivel<br>
+              Local 12-2, zona 1<br>
+              Ciudad de Guatemala, Guatemala<br>
               <strong>Phone:</strong> +1 5589 55488 55<br>
               <strong>Email:</strong> info@example.com<br>
             </p>
