@@ -174,3 +174,34 @@ dos bordes con color y que giramos con transform: rotate(-45deg);
 .otroestilo2{
     color: rgb(0, 104, 47);
 }
+
+.my-fixed-item {
+    position: fixed;
+    min-height: 120px;
+    width: 252px;
+    text-align: center;
+    word-wrap: break-word;
+    background-color: aquamarine;
+}
+
+.sidebar {
+	padding: 20px;
+	width: 170px;
+	background-color: #434A54;
+	color: #fff;
+  }
+  .sidebar h3 {
+	margin: 0;
+  }
+  .content,
+  .sidebar {
+	float: left;
+  }
+  
+  
+  /* The sticky */
+  .sidebar {
+	position: -webkit-sticky;
+	position: sticky;
+	top: 15px;
+  }
