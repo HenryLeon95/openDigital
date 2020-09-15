@@ -46,12 +46,15 @@ Productos
                                 <div class="container" data-aos="fade-up">
 
                                     <div class="row" data-aos="fade-up" data-aos-delay="100">
-                                        <div class=" col-lg-12">
+                                        <div class=" col-lg-12" style="text-align: center; align-items: center;">
                                             <ul id="portfolio-flters">
+                                                {% for categoria in categories %}
+                                                <li data-filter="*" >{{categoria.name}}</li>
+                                                {% endfor %}<!--
                                                 <li data-filter="*" class="filter-active">All</li>
                                                 <li data-filter=".filter-app">App</li>
                                                 <li data-filter=".filter-card">Card</li>
-                                                <li data-filter=".filter-web">Web</li>
+                                                <li data-filter=".filter-web">Web</li>-->
                                             </ul>
                                         </div>
                                     </div>
@@ -79,7 +82,6 @@ Productos
         <ul class="o">
             {% for categoria in categories %}
             <li class="has-sub" style="text-align: left;">
-                <a style="font-size: x-small;" href="{% url 'productos' %}">{{categoria.name}}</a>
             </li>
             {% endfor %}
         </ul>
@@ -146,7 +148,7 @@ Productos
                     <li data-filter="*" class="filter-active">All</li>
                     <li data-filter=".filter-app">App</li>
                     <li data-filter=".filter-card">Card</li>
-                    <li data-filter=".filter-web">Web</li>
+                    <li data-filter=".filter-web">Web</li> AUDIO BATERÍAS CABLES CÁMARAS CARGADORES COMPONENTES PARA PCS COMPUTADORAS DISCOS DUROS GAMING IMPRESORAS Y SUMINISTROS LIMPIEZA, HERRAMIENTAS Y OTROS MEMORIAS PROGRAMAS PROYECTORES REDES TABLETS
                 </ul>
             </div>
         </div>
