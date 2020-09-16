@@ -15,12 +15,12 @@ Productos
 
     <div class="row justify-content-center">
       <div class="col-xl-11 d-flex align-items-center">
-        <h1 class="logo mr-auto"><a href="">OpenDigital</a></h1>
+        <h1 class="logo mr-auto"><a href="{% url 'home' %}">OpenDigital</a></h1>
         <a href="" class="logo mr-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
         <nav class="nav-menu d-none d-lg-block">
           <ul>
             <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
-            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="{% url 'categorias' %}">Categorías</a></li>
           </ul>
         </nav><!-- .nav-menu -->
       </div>
@@ -32,218 +32,179 @@ Productos
 
 {% block intro %}
 <section id="intro">
-    <div class="intro-container">
-        <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-            <ol class="carousel-indicators"></ol>
-            <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active"
-                    style="background-image: url(../static/assets/img/intro-carousel/fondo2.jpg)">
-                    <div class="carousel-container">
-                        <div class="container">
-                            <h2 class="animate__animated animate__fadeInDown">Categorías</h2>
-                            <!-- ======= Portfolio Section ======= -->
-                            <section id="portfolio" class="section-bg" style="background-color: transparent">
-                                <div class="container" data-aos="fade-up">
+  <div class="intro-container">
+    <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators"></ol>
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active"
+          style="background-image: url(../../static/assets/img/intro-carousel/fondo2.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+                {% if flag0 %}
+                <h2 class="animate__animated animate__fadeInDown">Categorías</h2>
+                {% elif flag1 %}
+                <h2 class="animate__animated animate__fadeInDown">{{name_category_father}}</h2>
+                {% else %}
+                <a class="animate__animated animate__fadeInDown btn btn-success" href="#portfolio"
+                  style="color: white; font-size: x-large;">Ver Productos <i class="fas fa-eye"></i></a>
+                {% endif %}
 
-                                    <div class="row" data-aos="fade-up" data-aos-delay="100">
-                                        <div class=" col-lg-12" style="text-align: center; align-items: center;">
-                                            <ul id="portfolio-flters">
-                                                {% for categoria in categories %}
-                                                <li data-filter="*" >{{categoria.name}}</li>
-                                                {% endfor %}<!--
-                                                <li data-filter="*" class="filter-active">All</li>
-                                                <li data-filter=".filter-app">App</li>
-                                                <li data-filter=".filter-card">Card</li>
-                                                <li data-filter=".filter-web">Web</li>-->
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section><!-- End Portfolio Section -->
-                        </div>
+                <!-- ======= Category Section ======= -->
+                <section id="portfolio" class="section-bg" style="background-color: transparent;">
+                  <div class="container" data-aos="fade-up">
+                    <div class="row" data-aos="fade-up" data-aos-delay="100">
+                      <div class=" col-lg-12" style="text-align: center; align-items: center; align-content: center;">
+                        <ul id="portfolio-flters">
+                          {% for categoria in categories %}
+                          <a href="{% url 'productos' categoria.id 0 %}">
+                            <li data-filter="*">{{categoria.name}}</li>
+                          </a>
+                          {% endfor %}
+                        </ul>
+                      </div>
                     </div>
-                </div>
+                  </div>
+                </section><!-- End Category Section -->
+
+                <a class="animate__animated animate__fadeInDown btn btn-danger" href="javascript:history.back()"><i
+                    class="fas fa-undo-alt"></i> Volver</a>
+              </div>
             </div>
+          </div>
         </div>
+      </div>
     </div>
 </section>
 {% endblock intro %}
 
 {% block main %}
-<!--
-<div class="nuevo col-md-3" id="nuevo">
-    <br>
-    <div class="o" style="text-align: center;">
-        <h5>Categorias</h5>
-    </div>
-    <br>
-    <div class="o" style="text-align: center">
-        <hr>
-        <ul class="o">
-            {% for categoria in categories %}
-            <li class="has-sub" style="text-align: left;">
-            </li>
-            {% endfor %}
-        </ul>
-        <hr>
-        {% if flag0 %}
-        <div class="nuevo">
-            <h5 class="offset-md-2">
-                Sub-Categorias
-            </h5>
-            <p class="offset-md-1">
-                {{nombre_cat}}
-            </p>
-            <ul class="o" *ngFor="let subcategory of sub_categoria">
-                <li class="has-sub" *ngIf="subcategory.padre == id_cat">
-                    <button class="btn btn-info btn-xs" (click)="editCat(subcategory.id)">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="btn btn-danger btn-xs" (click)="deleteCat(subcategory.id)">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                    &nbsp;&nbsp;
-                    <a (click)="ver(subcategory)" style="float: right;">{{subcategory.nombre_categoria}}</a>
-                </li>
-            </ul>
-        </div>
-        {% endif %}
-    </div>
-    <br>
-</div>
-
-{% if categories %}
-<table class="table table-bordered">
-	<thead>
-		<tr>
-            <td>Categoría</td>		
-		</tr>		
-	</thead>
-	<tbody>
-		{% for categoria in categories %}
-		<tr>
-			<td>{{ categoria.name }}</td>
-		</tr>
-		{% endfor %}
-        {% else %}
-        <br>
-        <br>
-		<h1>Aún no se han registrado categorias!</h1>
-		{% endif %}
-	</tbody>
-</table> -->
 
 {% block portafolio %}
 <!-- ======= Portfolio Section ======= -->
 <section id="portfolio" class="section-bg">
-    <div class="container" data-aos="fade-up">
+  <div class="container" data-aos="fade-up">
 
-        <header class="section-header">
-            <h3 class="section-title">Our Portfolio</h3>
-        </header>
+    <header class="section-header">
+      <h3 class="section-title">{{name_category_father}}</h3>
+    </header>
 
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-            <div class=" col-lg-12">
-                <ul id="portfolio-flters">
-                    <li data-filter="*" class="filter-active">All</li>
-                    <li data-filter=".filter-app">App</li>
-                    <li data-filter=".filter-card">Card</li>
-                    <li data-filter=".filter-web">Web</li> AUDIO BATERÍAS CABLES CÁMARAS CARGADORES COMPONENTES PARA PCS COMPUTADORAS DISCOS DUROS GAMING IMPRESORAS Y SUMINISTROS LIMPIEZA, HERRAMIENTAS Y OTROS MEMORIAS PROGRAMAS PROYECTORES REDES TABLETS
-                </ul>
-            </div>
+    {% if flag2%}
+    <div class="row" data-aos="fade-up" data-aos-delay="100">
+      <div class=" col-lg-12">
+        <ul id="portfolio-flters">
+          Ordenar
+          <a href="{% url 'productos' id 0 %}">
+            <li data-filter="*">Más consumidos</li>
+          </a>
+          <a href="{% url 'productos' id 1 %}">
+            <li data-filter="*">Menor Precio</li>
+          </a>
+          <a href="{% url 'productos' id 2 %}">
+            <li data-filter="*">Maoyor Precio</li>
+          </a>
+        </ul>
+      </div>
+    </div>
+
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+      {% for producto in products%}
+
+      <div class="col-lg-4 col-md-8 portfolio-item filter-app">
+        <div class="portfolio-wrap">
+          <figure>
+            <img src="{% static 'assets/img/products/default1.jpg' %}" class="img-fluid" alt="">
+            <a href="{% static 'assets/img/products/default1.jpg' %}" class="link-preview venobox"
+              title="{{producto.item}}"><i class="ion ion-eye"></i></a>
+            <a href="portfolio-details.html" class="link-details" title="Más Detalles"><i
+                class="ion ion-android-open"></i></a>
+          </figure>
+
+          <div class="portfolio-info">
+            <p><a href="portfolio-details.html"
+                style="font-size:larger; color: rgb(2, 2, 100);"><b>{{producto.item}}</b></a></p>
+            <!--<p><b>Costo: Q</b>{{producto.cost}}</p>-->
+          </div>
         </div>
+      </div>
 
-        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <figure>
-                        <img src="{% static 'assets/img/portfolio/app1.jpg '%}'" class="img-fluid" alt="">
-                        <a href="{% static 'assets/img/portfolio/app1.jpg' %}" data-lightbox="portfolio"
-                            data-title="App 1" class="link-preview"><i class="ion ion-eye"></i></a>
-                        <a href="portfolio-details.html" class="link-details" title="More Details"><i
-                                class="ion ion-android-open"></i></a>
-                    </figure>
-
-                    <div class="portfolio-info">
-                        <h4><a href="portfolio-details.html">App 1</a></h4>
-                        <p>App</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                <div class="portfolio-wrap">
-                    <figure>
-                        <img src="{% static 'assets/img/portfolio/app3.jpg' %}" class="img-fluid" alt="">
-                        <a href="{% static 'assets/img/portfolio/app3.jpg' %}" class="link-preview venobox"
-                            data-gall="portfolioGallery" title="App 3"><i class="ion ion-eye"></i></a>
-                        <a href="portfolio-details.html" class="link-details" title="More Details"><i
-                                class="ion ion-android-open"></i></a>
-                    </figure>
-
-                    <div class="portfolio-info">
-                        <h4><a href="portfolio-details.html">App 3</a></h4>
-                        <p>App</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <figure>
-                        <img src="{% static 'assets/img/portfolio/card1.jpg' %}" class="img-fluid" alt="">
-                        <a href="{% static 'assets/img/portfolio/card1.jpg' %}" class="link-preview venobox"
-                            data-gall="portfolioGallery" title="Card 1"><i class="ion ion-eye"></i></a>
-                        <a href="portfolio-details.html" class="link-details" title="More Details"><i
-                                class="ion ion-android-open"></i></a>
-                    </figure>
-
-                    <div class="portfolio-info">
-                        <h4><a href="portfolio-details.html">Card 1</a></h4>
-                        <p>Card</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                <div class="portfolio-wrap">
-                    <figure>
-                        <img src="{% static 'assets/img/portfolio/card3.jpg' %}" class="img-fluid" alt="">
-                        <a href="{% static 'assets/img/portfolio/card3.jpg' %}" class="link-preview venobox"
-                            data-gall="portfolioGallery" title="Card 3"><i class="ion ion-eye"></i></a>
-                        <a href="portfolio-details.html" class="link-details" title="More Details"><i
-                                class="ion ion-android-open"></i></a>
-                    </figure>
-
-                    <div class="portfolio-info">
-                        <h4><a href="portfolio-details.html">Card 3</a></h4>
-                        <p>Card</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                <div class="portfolio-wrap">
-                    <figure>
-                        <img src="{% static 'assets/img/portfolio/web1.jpg' %}" class="img-fluid" alt="">
-                        <a href="{% static 'assets/img/portfolio/web1.jpg' %}" class="link-preview venobox"
-                            data-gall="portfolioGallery" title="Web 1"><i class="ion ion-eye"></i></a>
-                        <a href="portfolio-details.html" class="link-details" title="More Details"><i
-                                class="ion ion-android-open"></i></a>
-                    </figure>
-
-                    <div class="portfolio-info">
-                        <h4><a href="portfolio-details.html">Web 1</a></h4>
-                        <p>Web</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+      {% endfor %}
 
     </div>
+    {% endif %}
+
+  </div>
 </section><!-- End Portfolio Section -->
 {% endblock portafolio %}
 
 {% endblock main %}
+
+{% block footer %}
+<!-- ======= Footer ======= -->
+<footer id="footer">
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 footer-info">
+          <h3>OpenDigital</h3>
+          <p>Lo más importante paara nosotros es el agrado de nuestros
+            clientes y que puedan contar con una gran variedad de productos a elegir.
+            <br>Deseamos compartir nuestra pasión por la tecnología para simplificar y alegrar sus vidas.</p>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-links">
+          <h4>Enlaces útiles</h4>
+          <ul>
+            <li><i class="ion-ios-arrow-right"></i> <a href="{% url 'home' %}">Inicio</a></li>
+            <li><i class="ion-ios-arrow-right"></i> <a href="#portfolio">Productos</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-contact">
+          <h4>Contáctanos</h4>
+          <p>6ta avenida, 10 calle<br>
+            Edificio plaza vivar, 2do nivel<br>
+            Local 12-2, zona 1<br>
+            Ciudad de Guatemala, Guatemala<br>
+            <strong>Phone:</strong> +1 5589 55488 55<br>
+            <strong>Email:</strong> info@example.com<br>
+          </p>
+
+          <div class="social-links">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+            <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+          </div>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 footer-newsletter">
+          <h4>Nuestro compromiso</h4>
+          <p>Nuestro compromiso es brindarle un buen rendimiento y una excelente calidad de nuestros productos y así ser
+            responsables y confiables...</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="copyright">
+      &copy; Copyright <strong>OpenDigital</strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: Henry León 54****07
+        -->
+      Designed by <a href="https://api.whatsapp.com/send?phone=50254682407&text=Hola!%20Quiero%20información%20de%20tus%20servicios%20de%20programación.
+        %20Por%20favor%20y%20gracias%20por%20tu%20pronta%20respuesta!">Henry León</a>
+    </div>
+  </div>
+</footer><!-- End Footer -->
+{% endblock footer %}
