@@ -1,59 +1,591 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <title>{% block title %}Bookstore{% endblock title %}</title>
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    {% block css %}
-    {% endblock css %}
-    {% comment %}
-    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
-    {% endcomment %}
-  </head>
-  <body>
-    <header>
-      <!-- Fixed navbar -->
-      <div
-        class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm"
-      >
-        <a
-          href="{% url 'home' %}"
-          class="navbar-brand my-0 mr-md-auto font-weight-normal"
-          >Medical website</a
-        >
-        <nav class="my-2 my-md-0 mr-md-3">
-          <a class="p-2 text-dark" href="{% url 'home' %}">About</a>
-        </nav>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{% block title %}OpenDigital {% endblock title %}</title>
+
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700"
+    rel="stylesheet">
+    <!--FONT AWESOME-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" crossorigin="anonymous">
+
+  <!-- Vendor CSS Files -->
+  {% block css %}
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/owl.carousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/aos/aos.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+  {% endblock css %}
+
+  {% block css2 %}
+  {% endblock css2 %}
+  <!-- =======================================================
+    * Template Name: openDigital - v2.0.0
+    * Author: Henry León
+    * License: *****.****.*****
+    ======================================================== -->
+</head>
+
+<body>
+
+  {% block header %}
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-transparent">
+    <div class="container-fluid">
+
+      <div class="row justify-content-center">
+        <div class="col-xl-11 d-flex align-items-center">
+          <h1 class="logo mr-auto"><a href="">OpenDigital</a></h1>
+          <a href="" class="logo mr-auto"><img src="{% static 'assets/img/logo.png' %}" alt="" class="img-fluid"></a>
+          <nav class="nav-menu d-none d-lg-block">
+            <ul>
+              <li class="active"><a href="{% url 'home' %}">Inicio</a></li>
+              <li><a href="#about">Acerca de nosotros</a></li>
+              <li><a href="{% url 'categorias' %}">Portfolio</a></li>
+              <li><a href="#team">Equipo</a></li>
+              <li><a href="#contact">Contáctanos</a></li>
+            </ul>
+          </nav><!-- .nav-menu -->
+        </div>
       </div>
-    </header>
-    <div class="container">{% block content %} {% endblock content %}</div>
-    <!-- JavaScript -->
-    <!-- JS, Popper.js, and jQuery -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"
-      integrity="sha384-1CmrxMRARb6aLqgBO7yyAxTOQE2AKb9GfXnEo760AUcUmFx3ibVJJAzGytlQcNXd"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+
+    </div>
+  </header><!-- End Header -->
+  {% endblock header %}
+
+  {% block intro %}
+  <!-- ======= Intro Section ======= -->
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+        <ol class="carousel-indicators"></ol>
+        <div class="carousel-inner" role="listbox">
+          
+          <div class="carousel-item active" style="background-image: url(../static/assets/img/intro-carousel/1.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">Somos Profesionales</h2>
+                <p class="animate__animated animate__fadeInUp">
+                  Somos una empresa que cada día crece para poder estar actualizados conforme a los estándares de
+                  tecnología que se generan diariamente.
+                  <br>Contamos con un personal capacitado para poder solventar sus dudas y brindar sugerencias al
+                  momento de su compra.
+                </p>
+                <p class="animate__animated animate__fadeInUp">
+                  Cada producto es garantizado, seguro y confiable. Debido a que los proveedores testean los artículos
+                  antes de venderlos.
+                  <br>Además contamos con una gran diversidad de productos, para que pueda elegir entre precio-calidad y
+                  así pueda elegir el que más le convenga.
+                </p>
+                <a href="#featured-services"
+                  class="btn-get-started scrollto animate__animated animate__fadeInUp">¡Empezar!</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item" style="background-image: url(../static/assets/img/intro-carousel/fondo0.jpg)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">Lo que nos importa</h2>
+                <p class="animate__animated animate__fadeInUp">Lo más importante paara nosotros es el agrado de nuestros
+                  clientes y que puedan contar con una gran variedad de productos a elegir.
+                  <br>Toda sugerencia es bienvenida y todo mal entendido es aclarado.
+                  <br>Gracias a nuestro personal capacitado aseguramos brindar la mejor experiencia a nuestros clientes
+                  y queden completamente satisfechos.</p>
+                <a href="#featured-services"
+                  class="btn-get-started scrollto animate__animated animate__fadeInUp">¡Empezar!</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item" style="background-image: url(../static/assets/img/intro-carousel/fondo4.png)">
+            <div class="carousel-container">
+              <div class="container">
+                <h2 class="animate__animated animate__fadeInDown">Lo que ofrecemos</h2>
+                <p class="animate__animated animate__fadeInUp">Cada producto cuenta con garantías. Aseguramos y
+                  confiamos que le agradarán nuestros servicios,
+                  y si por algún motivo se generan dudas en un futuro, puede acercarse a nuestra empresa para solventar
+                  su duda.</p>
+                <p class="animate__animated animate__fadeInUp">Compartimos nuestra pasión con la tecnología para
+                  simplificar y alegrar tu vida y así ser tu Centro de soluciones tecnológicas.
+                </p>
+                <a href="#featured-services"
+                  class="btn-get-started scrollto animate__animated animate__fadeInUp">¡Empezar!</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
+  </section><!-- End Intro Section -->
+  {% endblock intro %}
+
+  {% block main %}
+  <main id="main">
+    {% block deatil_main %}
+    <!-- ======= Featured Services Section Section ======= -->
+    <section id="featured-services">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-4 box">
+            <i class="ion-ios-bookmarks-outline"></i>
+            <h4 class="title"><a href="">Variedad de Productos</a></h4>
+            <p class="description">Tenemos una gran variedad de productos para ofrecerle, y a la vez también gran
+              diversidad de marcas para un mismo producto
+              y así pueda elegir el que más le agrade.
+            </p>
+          </div>
+
+          <div class="col-lg-4 box box-bg">
+            <i class="ion-ios-stopwatch-outline"></i>
+            <h4 class="title"><a href="">Puntualidad</a></h4>
+            <p class="description">Nos desctacmos por la puntualidad en nuestros horarios de servicios y así no
+              defraudar a nuestros clientes.</p>
+          </div>
+
+          <div class="col-lg-4 box">
+            <i class="ion-ios-heart-outline"></i>
+            <h4 class="title"><a href="">Amigabilidad</a></h4>
+            <p class="description">Ofrecemos un ambiente amigable en cualquier momento.
+              <br>Puede llegar a nosotros con cualquier duda y con mucho gusto le atenderemos.</p>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End Featured Services Section -->
+    {% endblock deatil_main %}
+
+    {% block about_us %}
+    <!-- ======= About Us Section ======= -->
+    <section id="about">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>Acerca de nosotros</h3>
+          <p>OpenDigital es una empresa que se dedica a la venta de productos de tecnología, una empresa que se toma muy
+            en serio la relación con cada cliente
+            atentido.
+            <br>OpenDigital cuenta con un personal altamente calificado y así, poder solventar cualquier duda que puedan
+            surgir en cualquier momento.
+          </p>
+        </header>
+
+        <div class="row about-cols">
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="about-col">
+              <div class="img">
+                <img src="{% static 'assets/img/about-mission.jpg' %}" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-speedometer-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Nuestra Mision</a></h2>
+              <p>
+                Satisfacer las necesidades de nuestros clientes y ofrecer un gran servicio de venta de todo tipo
+                artículos para equipos computacionales y su
+                mantenimiento.
+                <br>Deseamos compartir nuestra pasión por la tecnología para simplificar y alegrar sus vidas.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="about-col">
+              <div class="img">
+                <img src="{% static 'assets/img/about-plan.jpg' %}" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-list-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Nuestro Plan</a></h2>
+              <p>
+                Nestra meta es anticiparnos a las necesidades de nuestros clientes, y satisfacerlos con rapidez,
+                amabilidad, con cortesía y de una manera integral.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="about-col">
+              <div class="img">
+                <img src="{% static 'assets/img/about-vision.jpg' %}" alt="" class="img-fluid">
+                <div class="icon"><i class="ion-ios-eye-outline"></i></div>
+              </div>
+              <h2 class="title"><a href="#">Nuestra Visión</a></h2>
+              <p>
+                OpenDigital tiene la visión de ser la primera opción de los clientes actuales y futuros, satisfaciendo
+                sus necesidades y requerimientos.
+                <br>Y así poder ser su centro de soluciones tecnológicas.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End About Us Section -->
+    {% endblock about_us %}
+
+    {% block skills %}
+    <!-- ======= Skills Section ======= -->
+    <section id="skills">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3>Nuestras habilidades</h3>
+          <p>Contamos con un personal altamente calificado para poder brindar cualquier tipo de ayuda, observación o
+            recomendación en cualquier
+            circunsatancia. También contamos con un grando de servicio técnico alto para que el cliente pueda realizar
+            su adquisición de una forma
+            segura, rápida y confiable.
+            <br><br>
+          <h2>Artículos más vendidos</h2>
+          </p>
+        </header>
+
+        <div class="skills-content">
+
+          <div class="progress">
+            <div class="progress-bar bg-success" role="progressbar" aria-valuenow="100" aria-valuemin="0"
+              aria-valuemax="100">
+              <span class="skill">Equipos y accesorios de computo <i class="val">35%</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-info" role="progressbar" aria-valuenow="90" aria-valuemin="0"
+              aria-valuemax="100">
+              <span class="skill">Impresoras y suministros <i class="val">30%</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="75" aria-valuemin="0"
+              aria-valuemax="100">
+              <span class="skill">Equipos de red, limpieza y herramientas <i class="val">25%</i></span>
+            </div>
+          </div>
+
+          <div class="progress">
+            <div class="progress-bar bg-danger" role="progressbar" aria-valuenow="55" aria-valuemin="0"
+              aria-valuemax="100">
+              <span class="skill">Programas y otros<i class="val">10%</i></span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- End Skills Section -->
+    {% endblock skills %}
+
+    {% block portafolio %}
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <h3 class="section-title">Nuestro Portafolio</h3>
+        </header>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class=" col-lg-12">
+            <ul id="portfolio-flters">
+              <a href="{% url 'categorias' %}"><li class="filter-active" style="color: blacks; background-color: rgb(51, 199, 162); color: black;">Mostrar</li></a>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+    {% endblock portafolio %}
+
+    {% block clients %}
+    <!-- ======= Our Clients Section ======= -->
+    <section id="clients">
+      <div class="container" data-aos="zoom-in">
+
+        <header class="section-header">
+          <h3>Nuestros Clientes</h3>
+        </header>
+
+        <div class="owl-carousel clients-carousel">
+          <img src="{% static 'assets/img/clients/client-1.png' %}" alt="">
+          <img src="{% static 'assets/img/clients/client-2.png' %}" alt="">
+          <img src="{% static 'assets/img/clients/client-4.png' %}" alt="">
+          <img src="{% static 'assets/img/clients/client-5.png' %}" alt="">
+          <img src="{% static 'assets/img/clients/client-6.png' %}" alt="">
+          <img src="{% static 'assets/img/clients/client-7.png' %}" alt="">
+          <img src="{% static 'assets/img/clients/client-8.png' %}" alt="">
+          <img src="{% static 'assets/img/clients/client-3.png' %}" alt="">
+        </div>
+
+      </div>
+    </section><!-- End Our Clients Section -->
+    {% endblock clients %}
+
+    {% block team %}
+    <!-- ======= Team Section ======= -->
+    <section id="team">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h3>Equipo</h3>
+          <p>Sed ut perspiciatis unde omnis iste natus erroP DOWN
+            Drop Down 1
+            Drop Down 3
+            Drop Down 4
+            Drop Down 5
+            CONTACT US
+            r sit voluptatem accusantium doloremque</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="100">
+              <img src="{% static 'assets/img/team-1.jpg' %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Walter White</h4>
+                  <span>Chief Executive Officer</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="200">
+              <img src="{% static 'assets/img/team-2.jpg' %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Sarah Jhonson</h4>
+                  <span>Product Manager</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="300">
+              <img src="{% static 'assets/img/team-3.jpg' %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>William Anderson</h4>
+                  <span>CTO</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="member" data-aos="fade-up" data-aos-delay="400">
+              <img src="{% static 'assets/img/team-4.jpg' %}" class="img-fluid" alt="">
+              <div class="member-info">
+                <div class="member-info-content">
+                  <h4>Amanda Jepson</h4>
+                  <span>Accountant</span>
+                  <div class="social">
+                    <a href=""><i class="fa fa-twitter"></i></a>
+                    <a href=""><i class="fa fa-facebook"></i></a>
+                    <a href=""><i class="fa fa-google-plus"></i></a>
+                    <a href=""><i class="fa fa-linkedin"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Team Section -->
+    {% endblock team %}
+
+    {% block contact %}
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-header">
+          <h3>Contáctanos</h3>
+          <p>Puede contactarnos por cualquier medio presente y con mucho gusto aclararemos todas sus dudas.
+            <br><b><i>¡ Nos agradará poder servirle de ayuda !</i></b></p>
+        </div>
+
+        <div class="row contact-info">
+
+          <div class="col-md-4">
+            <div class="contact-address">
+              <i class="ion-ios-location-outline"></i>
+              <h3>Address</h3>
+              <address>6ta avenida, 10 calle, edificio plaza vivar 2do nivel local 12-2, zona 1, ciudad de Guatemala, Guatemala.</address>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-phone">
+              <i class="ion-ios-telephone-outline"></i>
+              <h3>Phone Number</h3>
+              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="contact-email">
+              <i class="ion-ios-email-outline"></i>
+              <h3>Email</h3>
+              <p><a href="mailto:info@example.com">info@example.com</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+    {% endblock contact %}
+
+  </main><!-- End #main -->
+  {% endblock main %}
+
+  {% block footer %}
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-3 col-md-6 footer-info">
+            <h3>OpenDigital</h3>
+            <p>Lo más importante paara nosotros es el agrado de nuestros
+              clientes y que puedan contar con una gran variedad de productos a elegir.
+              <br>Deseamos compartir nuestra pasión por la tecnología para simplificar y alegrar sus vidas.</p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Enlaces útiles</h4>
+            <ul>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#">Inicio</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#about">Acerca de nosotros</a></li>
+              <li><i class="ion-ios-arrow-right"></i> <a href="#team">Equipo</a></li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h4>Contáctanos</h4>
+            <p>6ta avenida, 10 calle<br>
+              Edificio plaza vivar, 2do nivel<br>
+              Local 12-2, zona 1<br>
+              Ciudad de Guatemala, Guatemala<br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+
+            <div class="social-links">
+              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+              <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
+              <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+            </div>
+
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-newsletter">
+            <h4>Nuestro compromiso</h4>
+            <p>Nuestro compromiso es brindarle un buen rendimiento y una excelente calidad de nuestros productos y así ser responsables y confiables...</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong>OpenDigital</strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!--
+          All the links in the footer should remain intact.
+          You can delete the links only if you purchased the pro version.
+          Licensing information: https://bootstrapmade.com/license/
+          Purchase the pro version with working PHP/AJAX contact form: Henry León 54****07
+        -->
+        Designed by <a href="https://api.whatsapp.com/send?phone=50254682407&text=Hola!%20Quiero%20información%20de%20tus%20servicios%20de%20programación.
+        %20Por%20favor%20y%20gracias%20por%20tu%20pronta%20respuesta!">Henry León</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+  {% endblock footer %}
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+  <!-- Uncomment below i you want to use a preloader -->
+  <!-- <div id="preloader"></div> -->
+
+  {% block js %}
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/waypoints/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/counterup/counterup.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/owl.carousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/aos/aos.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  {% endblock js %}
+
+</body>
+
 </html>
